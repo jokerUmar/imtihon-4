@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>landing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&family=Rubik:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+
+    <header>
+        <div class="container" style="padding: 14px 25px;">
+            <nav class="nav">
+                <img class="logo" src="./images/logo.png" width="226" height="44" alt="">
+
+                <form class="form">
+                    <img src="./images/search-icon.png" width="19" height="18.27" alt="">
+                    <input type="text" placeholder="Search books" class="search-input">
+                </form>
+
+                <div class="nav-end">
+                    <a href=""><img src="./images/sun-icov.png" alt=""></a>
+                    <button class="logout">Logout</button>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="data">
+
+        <span class="line"></span>
+
+        <div class="container" style="display: flex; align-items: center; padding: 11px 0px;">
+
+            <p class="result">Showing <span class="showing-number">18</span> Result <span class="result-number"></span> </p>
+
+            <button class="sort-btn">
+                <img src="./images/calendar.png" alt="">
+                <p>Order by newest</p>
+            </button>
+
+        </div>
+        <span class="line"></span>
+    </div>
+    
+    <main class="main">
+
+        <div class="bookmark">
+            <h2>Bookmarks</h2>
+            <p>If you don’t like to read, you haven’t found the right book</p>
+
+            <ul class="bookmark-list">
+
+
+            </ul>
+
+        </div>
+        <div class="list-box" style="background-color:#F8FAFD;">
+            <ul class="list">
+
+            </ul>
+
+            <div class="pages">
+            </div>
+
+           
+        </div>
+
+    </main>
+
+
+
+
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
