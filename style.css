@@ -120,7 +120,7 @@
 .list-box{
     width: 100%;
     height: 100%;
-    position: relative;
+    /* position: relative; */
     padding-bottom: 100px;
 }
 
@@ -128,6 +128,7 @@
     flex-wrap: wrap;
     padding: 0px;
     display: flex;
+    z-index: 1 !important;
 }
 
 .list-item {
@@ -190,29 +191,39 @@
     margin-bottom: 5px;
 }
 
-.read-btn{
+.read-btn{ 
     text-align: center;
-    width: 246px;
+    width: 190px;
     color: white;
     background-color: #75828A;
 }
 
-
-.pagination{
+.page-box{
+    width: 480px;
+    position: absolute;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    /* overflow-x: scroll; */
-    width: 400px; 
-    height: 80px;
-    /* position: absolute; */
-    display: flex;
-    flex-wrap: wrap;
-    bottom: -20px;
     right: 40%;
+    display: flex;
+    align-items: center;
 }
 
-.pagination button{
+.page-box button{
+    width: 40px;
+    height: 20px;
+}
+
+.pages{
+    overflow-x: scroll; 
+    display: flex;
+    align-items: center;
+    width:400px; 
+    height: 80px;
+    margin-bottom: -15px;
+}
+
+.pages button{
     width: 40px;
     padding: 5px;
     display: flex;
@@ -221,6 +232,14 @@
     margin-left: 3px;
     text-align: center;
     justify-content: center;
+}
+
+.prev{
+    margin-right: 10px;
+}
+
+.next{
+    margin-left: 20px !important;
 }
 
 .icons{
@@ -234,4 +253,64 @@
     background-color: #F8FAFD;
     /* border: none; */
     width: 30px;
+}
+
+.overlay{
+    position: absolute;
+    width: 100% !important;
+    height: 245%;
+    background-color:rgba(0, 0, 0, 0.5) !important;
+    display: none;
+}
+
+.modal{
+    position: absolute;
+    width: 552.47px;
+    height: 1116.46px;
+    background-color: white;
+    right: 2px;
+    top: 0;
+    z-index: 99;
+    overflow:scroll !important;
+}
+
+.modal-data{
+    font-size: 14px;
+    color: rgba(13, 117, 255, 1);
+    padding: 6px 40px ;
+    background-color: rgba(13, 117, 255, 0.09);
+    border-radius: 30px;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.modal-header{
+    padding: 23px; display: flex; justify-content: space-between; background-color: #F8FAFD; margin-bottom: 43px;
+}
+
+.modal-img{
+    display: flex; justify-content: center; margin: 0 auto; margin-bottom: 43px;
+}
+
+.modal-desc{
+    padding-left: 43px; padding-right: 43px;
+}
+
+.m{
+margin-top: 27px; display: inline-block;   align-items: center;
+}
+
+.page-count , .category , .publish{
+    margin-left: 10px;
+}
+
+.page-count{
+    margin-top: -140px;
+}
+
+.author{
+    margin-right: 5px
+}
+.q{
+    margin-right: 10px 
 }
