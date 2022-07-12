@@ -50,7 +50,9 @@ elForm.addEventListener("submit", function (e) {
 
 
 
-let search = "harry-potter"
+
+
+let search = "js"
 let page = 1;
 let maxResult = 10;
 let orderBy = "relevance"
@@ -63,6 +65,10 @@ let getBooks = async function () {
 
     findBookmark(data.items)
 
+
+    datasetbtn(data.items)
+
+
     elList.innerHTML = null
 
     resultNumber.textContent = data.totalItems
@@ -70,7 +76,8 @@ let getBooks = async function () {
 
     if (data.items && data.items.length > 0) {
         renderMovies(data.items, elList)
-    } else {
+    }
+     else {
         renderNotMovies(elList)
     }
 
@@ -131,7 +138,12 @@ let renderMovies = function (arr, htmlElement) {
         buttons.appendChild(infoBtn)
         buttons.appendChild(br)
         buttons.appendChild(readBtn)
+
+        console.log(book);
+
     });
+
+
 }
 
 
@@ -153,8 +165,6 @@ let renderNotMovies = function (htmlElement) {
 
 let bookmarkArr = []
 
-
-
 let findBookmark = function (arr) {
 
     elList.addEventListener("click", function (e) {
@@ -165,96 +175,109 @@ let findBookmark = function (arr) {
 
             let foundBookmark = arr.find(item => item.id === bookmarkId)
 
-            if (foundBookmark) {
+            if (!bookmarkArr.includes(foundBookmark)) {
                 bookmarkArr.push(foundBookmark)
             }
 
             bookmarkList.innerHTML = null
 
+
+            console.log(foundBookmark);
+
             renderBookmark(bookmarkArr, bookmarkList)
 
-
+            
         }
     })
 
 }
 
+
 let renderBookmark = function (arr, htmlElement) {
 
     arr.forEach(bookmark => {
 
-        // let newList = document.createElement("li")
-        // let newBox = document.createElement("div")
-        // let newTitle = document.createElement("h3")
-        // let newAuthor = document.createElement("p")
-        // let newIcons = document.createElement("div")
+        let newList = document.createElement("li")
+        let newBox = document.createElement("div")
+        let newTitle = document.createElement("h3")
+        let newAuthor = document.createElement("p")
+        let newIcons = document.createElement("div")
 
-        // let openBtn = document.createElement("button")
-        // let openImg = document.createElement("img")
-        // let deletBtn = document.createElement("button")
-        // let deletImg = document.createElement("img")
+        let openBtn = document.createElement("a")
+        let openImg = document.createElement("img")
+        let deletBtn = document.createElement("button")
+        let deletImg = document.createElement("img")
 
-        // newTitle.textContent = bookmark.volumeInfo.title
-        // newAuthor.textContent = bookmark.volumeInfo.authors
+        newAuthor.textContent = bookmark.volumeInfo.authors
+        newTitle.textContent = bookmark.volumeInfo.title
 
-        // openImg.setAttribute("src", "./images/book-open1.png")
-        // deletImg.setAttribute("src", "./images/delete1.png")
+        openImg.setAttribute("src", "./images/book-open1.png")
+        deletImg.setAttribute("src", "./images/delete1.png")
 
-        // deletBtn.textContent = ""
+        openImg.setAttribute("class", "open-img")
+        deletImg.setAttribute("class", "delete-img")
 
-        // deletBtn.setAttribute("class", "delete-btn")
-        // openBtn.setAttribute("class", "open-btn")
+        deletBtn.setAttribute("class", "delete-btn")
+        openBtn.setAttribute("class", "open-btn")
 
-        // newIcons.setAttribute("class", "icons")
+        newIcons.setAttribute("class", "icons")
 
-        // deletImg.style.zIndex = "-99"
-        // deletImg.style.display = "inline"
+        openBtn.style.display = "block"
+        newList.style.listStyleType = "none"
+        newList.style.backgroundColor = "#F8FAFD"
+        newList.style.display = "flex"
+        newList.style.width = "280px"
+        newList.style.padding = "5px"
+        newList.style.marginLeft = "-15px"
+        newList.style.marginBottom = "20px"
+        newTitle.style.fontSize = "16px"
+        newAuthor.style.fontSize = "13px"
+        newAuthor.style.color = "#757881"
+        newAuthor.style.fontFamily = "Noto Sans"
+        deletBtn.style.border = "none"
+
+        deletBtn.dataset.deletBtnId = bookmark.id
+        deletImg.dataset.deletBtnId = bookmark.id
+
+        htmlElement.appendChild(newList)
+        newList.appendChild(newBox)
+        newBox.appendChild(newTitle)
+        newBox.appendChild(newAuthor)
+        newList.appendChild(newIcons)
+        newIcons.appendChild(openBtn)
+        openBtn.appendChild(openImg)
+        newIcons.appendChild(deletBtn)
+        deletBtn.appendChild(deletImg)
 
 
-        // newList.style.listStyleType = "none"
-        // newList.style.backgroundColor = "#F8FAFD"
-        // newList.style.display = "flex"
-        // newList.style.width = "280px"
-        // newList.style.padding = "5px"
-        // newList.style.marginLeft = "-15px"
-        // newList.style.marginBottom = "20px"
-        // newTitle.style.fontSize = "16px"
-        // newAuthor.style.fontSize = "13px"
-        // newAuthor.style.color = "#757881"
-        // newAuthor.style.fontFamily = "Noto Sans"
-
-        // deletBtn.dataset.deletBtnId = bookmark.id
-
-        // htmlElement.appendChild(newList)
-        // newList.appendChild(newBox)
-        // newBox.appendChild(newTitle)
-        // newBox.appendChild(newAuthor)
-        // newList.appendChild(newIcons)
-        // newIcons.appendChild(openBtn)
-        // openBtn.appendChild(openImg)
-        // newIcons.appendChild(deletBtn)
-        // deletBtn.appendChild(deletImg)
-
-        let  p = document.querySelector("")
-
-        p.style.fontSize = "22px"
+        htmlElement.addEventListener("click" , function(e){
+            if (e.target.matches(".open-img") || e.target.matches(".open-btn")) {
         
-        let html = `
+                openBtn.setAttribute("href" , bookmark.volumeInfo.previewLink)
         
-        <p class="p">salom</p>            
-        `
-        bookmarkList.insertAdjacentHTML("beforeend" , html)
-
-        // p.dataset.id = bookmark.id
+            }
+          })
 
     });
-
 }
 
-bookmarkList.addEventListener("click", function (e) {
+let datasetbtn = function (arr) {
 
-    if (e.target.matches(".delete-btn") && e.target.matches(".delete-btn") ) {
-        console.log("wkfnkl");
-    }
+    bookmarkList.addEventListener("click", function (e) {
 
-})
+        if (e.target.matches(".delete-btn") || e.target.matches(".delete-img")) {
+            let deletId = e.target.dataset.deletBtnId
+
+            let foundDelete = arr.findIndex(item => item.id = deletId)
+
+            bookmarkArr.splice(foundDelete, 1)
+
+            bookmarkList.innerHTML = null
+
+            renderBookmark(bookmarkArr, bookmarkList)
+
+        }
+
+
+    })
+}
